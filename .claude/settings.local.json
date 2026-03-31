@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp:*)",
+      "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(''''title:'''', d.get\\(''''title'''',''''''''\\)\\); print\\(''''screenshot_url:'''', d.get\\(''''screenshot'''',{}\\).get\\(''''downloadUrl'''',''''''''\\)\\)\")",
+      "Bash(ls \"C:\\\\Users\\\\quasi\\\\OneDrive - \\(주\\)오른경영컨설팅\\\\문서\\\\GitHub\\\\page_hongsam\")",
+      "Bash(curl -L -o \"C:/Users/quasi/OneDrive - \\(주\\)오른경영컨설팅/문서/GitHub/page_hongsam/stitch-screens/product-story.png\" \"https://lh3.googleusercontent.com/aida/ADBb0ujbvP7v6M5Ewc29UK_-rBae3B_pgliAsAgeedZWx4K_gq6XC-_-Mxm4kDYAy7mAjAwMmmue9osQVTBOTSPh8iU-GcSmNv-ZVZNDmkxdP-LuTw4X6472ZJ4h2stzGb-_9x6u89q_7hizCc24LQ5v9nhV54V0nX3-6GA6dhi0RLtGkIeQ011CCmO0W4H9fO9JF1CnJkhnmVwWediI6pTNB4j8bHpNG6nd3IFfBVgCSpbp0snWeDaf5LnPPG8\")",
+      "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); f=open\\(''''C:/Users/quasi/OneDrive - \\(주\\)오른경영컨설팅/문서/GitHub/page_hongsam/stitch-screens/product-story.html'''',''''w'''',encoding=''''utf-8''''\\); f.write\\(d.get\\(''''htmlCode'''',{}\\).get\\(''''content'''',''''''''\\)\\); f.close\\(\\); print\\(''''saved''''\\)\")",
+      "Bash(python -c \":*)",
+      "Bash(ls \"C:/Users/quasi/OneDrive - \\(주\\)오른경영컨설팅/문서/GitHub/page_hongsam/.claude\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx http-server:*)",
+      "mcp__mcp-server-firecrawl__firecrawl_scrape",
+      "Bash(mkdir -p \"C:/Users/quasi/OneDrive - \\(주\\)오른경영컨설팅/문서/GitHub/page_hongsam/stitch-screens/img\")",
+      "Bash(curl -L -o logo.png \"https://jinsamga.co.kr/jinsamga/main/logo_jsg.png\")",
+      "Bash(curl -L -o main_1.jpg \"https://jinsamga.co.kr/jinsamga/main/main_1.jpg\")",
+      "Bash(curl -L -o main_2.jpg \"https://jinsamga.co.kr/jinsamga/main/main_2.jpg\")",
+      "Bash(curl -L -o main_3.jpg \"https://jinsamga.co.kr/jinsamga/main/main_3.jpg\")",
+      "Bash(curl -L -o banner01-A.jpg \"https://jinsamga.co.kr/jinsamga/main/banner01-A.jpg\")",
+      "Bash(curl -L -o banner01-B.jpg \"https://jinsamga.co.kr/jinsamga/main/banner01-B.jpg\")",
+      "Bash(curl -L -o banner01-C.jpg \"https://jinsamga.co.kr/jinsamga/main/banner01-C.jpg\")",
+      "Bash(curl -L -o banner01-D.jpg \"https://jinsamga.co.kr/jinsamga/main/banner01-D.jpg\")",
+      "Bash(curl -L -o banner02.jpg \"https://jinsamga.co.kr/jinsamga/main/banner02.jpg\")",
+      "Bash(curl -L -o prod_jin.png \"https://jinsamga.co.kr/web/product/medium/202302/b12fbf3b745cfb631907213915ade231.png\")",
+      "Bash(curl -L -o prod_sam.png \"https://jinsamga.co.kr/web/product/medium/202302/2f444614b6a286b00a06607189c6031d.png\")",
+      "Bash(curl -L -o prod_45.png \"https://jinsamga.co.kr/web/product/medium/202302/55da1d48340929faff508a793da5d497.png\")",
+      "Bash(curl -L -o prod_25.png \"https://jinsamga.co.kr/web/product/medium/202302/ffbb8fb92f13df10de12df87c7182284.png\")",
+      "Bash(curl -L -o prod_master.png \"https://jinsamga.co.kr/web/product/medium/202302/4a52c71ad0f420123eb413001fee59d6.png\")",
+      "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(''''screenshot_url:'''', d.get\\(''''screenshot'''',{}\\).get\\(''''downloadUrl'''',''''''''\\)[:200]\\)\")",
+      "Bash(curl -L -o \"C:/Users/quasi/OneDrive - \\(주\\)오른경영컨설팅/문서/GitHub/page_hongsam/stitch-screens/main-landing.png\" \"https://lh3.googleusercontent.com/aida/ADBb0uiYXpvsbtD4Gqq5IVWqtqi5g8lSFufR75QOXf5jSyNWlLHAbDzPaffAUb3AzxFGh-3RrfOTCM7jXbAYJ-rEmTZY8cZOOU8_lWN9qyqHJgatlT03F_0X_nfHP7QqS80KKxfVl9UFz15vlYjPa0CCwbDkRSZuy\")",
+      "Bash(ls \"C:/Users/quasi/OneDrive - \\(주\\)오른경영컨설팅/문서/GitHub/page_hongsam/\")",
+      "Bash(gh repo:*)",
+      "Bash(vercel --version)",
+      "Bash(npx vercel:*)",
+      "Bash(vercel --prod --yes)"
+    ]
+  }
+}
