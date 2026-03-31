@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>진삼가 진(眞) - 최고 농도 프리미엄 홍삼추출액</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      "primary-container":"#8a0015","on-surface-variant":"#5a403c","on-primary-container":"#ff8f8a",
+      "surface-container-high":"#ebe8e3","background":"#fcf9f4","surface-container":"#f0ede8",
+      "primary":"#60000c","surface-container-lowest":"#ffffff","on-primary":"#ffffff",
+      "outline-variant":"#e3beb8","surface-container-low":"#f6f3ee","secondary":"#735c00",
+      "surface":"#fcf9f4","on-surface":"#1c1c19","outline":"#8e706b",
+      "surface-container-highest":"#e5e2dd","primary-fixed-dim":"#ffb3af",
+    },
+    fontFamily: {
+      "headline":["Gowun Batang","serif"],"body":["Gowun Dodum","sans-serif"],"label":["Gowun Dodum","sans-serif"]
+    },
+  }},
+}
+</script>
+<style>
+    .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 100,'GRAD' 0,'opsz' 24; }
+    .noise-overlay { position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:0.04; }
+    .btn-magnetic { position:relative;overflow:hidden;cursor:pointer;transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .btn-magnetic:hover { transform:scale(1.03); }
+    .btn-magnetic .btn-bg { position:absolute;inset:0;transform:translateY(100%);transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .btn-magnetic:hover .btn-bg { transform:translateY(0); }
+    .btn-magnetic span { position:relative;z-index:1; }
+    .link-lift { transition:transform 0.3s ease,color 0.3s ease; }
+    .link-lift:hover { transform:translateY(-2px); }
+    .nav-pill { position:fixed;top:1.25rem;left:50%;transform:translateX(-50%);z-index:100;border-radius:9999px;transition:all 0.5s;padding:0.75rem 2rem;background:rgba(252,249,244,0.6);backdrop-filter:blur(24px);border:1px solid rgba(227,190,184,0.2);box-shadow:0 8px 32px rgba(28,28,25,0.08); }
+    .nav-link { position:relative; }
+    .nav-link::after { content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:currentColor;transition:width 0.3s; }
+    .nav-link:hover::after { width:100%; }
+    .gs-reveal { opacity:0;transform:translateY(40px); }
+    .editorial-shadow { box-shadow:0 20px 60px -15px rgba(28,28,25,0.06); }
+    blockquote { border-left:2px solid #735c00;padding-left:2rem;font-family:'Gowun Batang',serif;color:#5a403c;line-height:1.5; }
+
+    /* Floating purchase bar */
+    .floating-bar { position:fixed;bottom:0;left:0;right:0;z-index:90;transform:translateY(100%);transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .floating-bar.visible { transform:translateY(0); }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body">
+
+<svg class="noise-overlay" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+<!-- Nav -->
+<nav class="nav-pill">
+<div class="flex items-center gap-8">
+    <div class="flex items-center gap-2"><img src="img/logo.png" alt="진삼가" class="h-6"><span class="text-lg font-headline tracking-tighter text-primary">진삼가</span></div>
+    <div class="hidden md:flex items-center gap-7 font-headline text-[15px]">
+        <a class="nav-link link-lift text-on-surface-variant hover:text-primary" href="main-landing.html">홈</a>
+        <a class="nav-link link-lift text-on-surface-variant hover:text-primary" href="product-story.html">스토리</a>
+        <a class="nav-link-active link-lift text-primary border-b-2 border-primary pb-0.5" href="products.html">제품</a>
+        <a class="nav-link link-lift text-on-surface-variant hover:text-primary" href="#">후기</a>
+    </div>
+    <button class="btn-magnetic ml-2 bg-primary text-white px-6 py-2 text-xs uppercase tracking-widest rounded-full"><span class="btn-bg bg-secondary"></span><span>구매하기</span></button>
+</div>
+</nav>
+
+<main class="pt-28">
+
+<!-- ===== S1: Above the Fold — 제품 기본 정보 ===== -->
+<section id="productTop" class="py-12 px-10">
+<div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+    <!-- Image -->
+    <div class="gs-reveal">
+        <div class="bg-surface-container-low rounded-[2rem] p-12 flex items-center justify-center aspect-square editorial-shadow">
+            <img class="max-h-full object-contain rounded-[1.5rem]" alt="진삼가 진" src="img/prod_jin.png"/>
+        </div>
+    </div>
+    <!-- Info -->
+    <div class="gs-reveal">
+        <span class="text-xs uppercase tracking-[0.3em] text-secondary mb-4 block">9증9포 명품홍삼</span>
+        <h1 class="font-headline text-4xl md:text-5xl text-on-surface mb-2">진삼가 진 (眞)</h1>
+        <p class="text-on-surface-variant text-lg mb-6">최고 농도 프리미엄 홍삼추출액</p>
+
+        <div class="flex gap-2 mb-6 flex-wrap">
+            <span class="bg-primary/10 text-primary text-sm px-4 py-2 rounded-full font-bold">홍삼추출액 100%</span>
+            <span class="bg-primary/10 text-primary text-sm px-4 py-2 rounded-full font-bold">진세노사이드 12배</span>
+            <span class="bg-secondary/10 text-secondary text-sm px-4 py-2 rounded-full font-bold">합성첨가물 제로</span>
+        </div>
+
+        <p class="font-headline text-3xl text-primary mb-8">360,000원</p>
+
+        <div class="space-y-3 mb-8 text-sm text-on-surface-variant">
+            <p>용량: 80ml × 30포 / 100포</p>
+            <p>원료: 풍기산 6년근 인삼 (9증9포 방식 추출)</p>
+        </div>
+
+        <div class="flex gap-4">
+            <button class="btn-magnetic flex-1 bg-primary text-white py-4 text-sm uppercase tracking-widest rounded-[1.5rem]">
+                <span class="btn-bg bg-secondary"></span><span>장바구니 담기</span>
+            </button>
+            <button class="btn-magnetic flex-1 bg-gradient-to-r from-[#60000c] to-[#8a0015] text-white py-4 text-sm uppercase tracking-widest rounded-[1.5rem]">
+                <span class="btn-bg bg-secondary"></span><span>바로 구매</span>
+            </button>
+        </div>
+        <p class="text-xs text-on-surface-variant mt-4 text-center">3만원 이상 무료배송 · 고객센터 1599-3300</p>
+    </div>
+</div>
+</section>
+
+
+<!-- ===== S2: Story Bridge ===== -->
+<section class="py-20 bg-surface-container-low px-10">
+<div class="max-w-3xl mx-auto text-center gs-reveal">
+    <p class="font-headline text-2xl text-primary mb-4">"우리는 어떤 일을 하는가?"</p>
+    <p class="text-on-surface-variant leading-relaxed">우리는 사람들의 건강을 지키고 행복한 삶을 살아가는 데 도움을 줍니다.</p>
+    <p class="text-sm text-secondary mt-4">— 진삼가 대표 김명범</p>
+</div>
+</section>
+
+
+<!-- ===== S3: 풍기 6년근 — 원료의 진정성 ===== -->
+<section class="py-24 px-10 bg-surface">
+<div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div class="gs-reveal">
+            <img class="w-full aspect-[4/3] object-cover rounded-[2rem] editorial-shadow" alt="풍기 인삼밭" src="img/banner01-D.jpg"/>
+        </div>
+        <div class="gs-reveal">
+            <span class="text-xs uppercase tracking-[0.4em] text-secondary mb-4 block">원료의 진정성</span>
+            <h2 class="font-headline text-3xl md:text-4xl text-on-surface mb-6 leading-tight">소백산 풍기,<br>1,500년 인삼의 고장.</h2>
+            <p class="text-on-surface-variant leading-loose mb-8">1541년, 주세붕 풍기 군수가 산삼 종자를 재배하기 시작한 곳. 대한민국 인삼 재배의 발상지, 풍기. 조선 왕실에서도 오직 풍기 인삼만을 애용했습니다.</p>
+            <div class="grid grid-cols-4 gap-3">
+                <div class="bg-surface-container-lowest p-4 rounded-[1rem] text-center"><span class="font-headline text-lg text-secondary block">400m</span><span class="text-[11px] text-on-surface-variant">고원지대</span></div>
+                <div class="bg-surface-container-lowest p-4 rounded-[1rem] text-center"><span class="font-headline text-lg text-secondary block">사질양토</span><span class="text-[11px] text-on-surface-variant">유기물 풍부</span></div>
+                <div class="bg-surface-container-lowest p-4 rounded-[1rem] text-center"><span class="font-headline text-lg text-secondary block">한랭</span><span class="text-[11px] text-on-surface-variant">큰 일교차</span></div>
+                <div class="bg-surface-container-lowest p-4 rounded-[1rem] text-center"><span class="font-headline text-lg text-secondary block">6년</span><span class="text-[11px] text-on-surface-variant">재배 기간</span></div>
+            </div>
+            <p class="font-headline text-lg text-primary mt-8 italic">진삼가는 오직 풍기에서 재배된 6년근 인삼만을 사용합니다.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- ===== S4: 9증9포 기술 ===== -->
+<section class="py-24 px-10 bg-surface-container-low">
+<div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 gs-reveal">
+        <span class="text-xs uppercase tracking-[0.4em] text-secondary mb-4 block">공정의 진정성</span>
+        <h2 class="font-headline text-3xl md:text-4xl text-on-surface mb-4">9번 찌고 9번 말리는 정성</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div class="relative group overflow-hidden h-80 rounded-[2rem] gs-reveal">
+            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="9증9포" src="img/banner01-A.jpg"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-[2rem]"></div>
+            <div class="absolute bottom-8 left-8"><h3 class="text-white font-headline text-2xl">세계 최초 전자동</h3><p class="text-white/70 text-sm">0.1도 단위 정밀 온도 제어</p></div>
+        </div>
+        <div class="bg-surface-container-lowest p-10 rounded-[2rem] gs-reveal editorial-shadow">
+            <blockquote class="mb-6">"1증1포가 풋김치 김치찌개라면, 9증9포는 묵은지 김치찌개입니다."</blockquote>
+            <p class="text-sm text-on-surface-variant leading-relaxed mb-6">진삼가는 저온에서 찌고 말리는 과정을 정확히 9번 반복하여, 유효성분의 유실을 원천 차단합니다.</p>
+            <!-- Comparison mini -->
+            <div class="grid grid-cols-2 gap-4 text-center text-sm">
+                <div class="bg-primary/5 p-4 rounded-[1rem]"><p class="font-bold text-primary mb-2">9증9포 (진삼가)</p><p class="text-on-surface-variant">진세노사이드 <strong class="text-primary">5~12배</strong></p><p class="text-on-surface-variant">체내 흡수율 <strong class="text-primary">6배↑</strong></p></div>
+                <div class="bg-surface-container-high p-4 rounded-[1rem]"><p class="font-bold text-on-surface-variant mb-2">1증1포 (일반)</p><p class="text-on-surface-variant">진세노사이드 기준치</p><p class="text-on-surface-variant">체내 흡수율 기준치</p></div>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-center gap-3 gs-reveal">
+        <span class="bg-surface px-4 py-1.5 rounded-full text-[12px] text-secondary font-bold">13종 특허</span>
+        <span class="bg-surface px-4 py-1.5 rounded-full text-[12px] text-secondary font-bold">HACCP</span>
+        <span class="bg-surface px-4 py-1.5 rounded-full text-[12px] text-secondary font-bold">FSSC22000</span>
+        <span class="bg-surface px-4 py-1.5 rounded-full text-[12px] text-secondary font-bold">HALAL</span>
+    </div>
+</div>
+</section>
+
+
+<!-- ===== S5: 합성첨가물 제로 ===== -->
+<section class="py-24 px-10 bg-surface">
+<div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12 gs-reveal">
+        <span class="text-xs uppercase tracking-[0.4em] text-secondary mb-4 block">성분의 진정성</span>
+        <h2 class="font-headline text-3xl md:text-4xl text-on-surface">이 제품의 전 성분</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-surface-container-lowest p-10 rounded-[2rem] gs-reveal editorial-shadow">
+            <h3 class="font-headline text-xl mb-6 text-primary">이 제품에 들어간 것</h3>
+            <div class="flex items-center gap-3 p-4 bg-primary/5 rounded-[1rem]">
+                <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1">check_circle</span>
+                <div><p class="font-bold text-on-surface">홍삼추출액 100%</p><p class="text-sm text-on-surface-variant">풍기산 6년근 인삼, 9증9포 방식 추출</p></div>
+            </div>
+        </div>
+        <div class="bg-surface-container-lowest p-10 rounded-[2rem] gs-reveal editorial-shadow">
+            <h3 class="font-headline text-xl mb-6 text-on-surface-variant">이 제품에 들어가지 않은 것</h3>
+            <div class="space-y-3">
+                <div class="flex items-center gap-3 text-on-surface-variant/50"><span class="material-symbols-outlined">close</span><span>착향료</span></div>
+                <div class="flex items-center gap-3 text-on-surface-variant/50"><span class="material-symbols-outlined">close</span><span>색소</span></div>
+                <div class="flex items-center gap-3 text-on-surface-variant/50"><span class="material-symbols-outlined">close</span><span>액상과당</span></div>
+                <div class="flex items-center gap-3 text-on-surface-variant/50"><span class="material-symbols-outlined">close</span><span>시클로덱스트린</span></div>
+                <div class="flex items-center gap-3 text-on-surface-variant/50"><span class="material-symbols-outlined">close</span><span>잔탄검</span></div>
+            </div>
+        </div>
+    </div>
+    <p class="font-headline text-xl text-primary text-center mt-10 italic gs-reveal">성분표가 곧 자부심입니다.</p>
+</div>
+</section>
+
+
+<!-- ===== S6: 복용 가이드 + 추천 대상 ===== -->
+<section class="py-24 px-10 bg-surface-container-low">
+<div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div class="gs-reveal">
+            <h2 class="font-headline text-3xl mb-8">이렇게 드세요</h2>
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="bg-surface-container-lowest p-6 rounded-[1.5rem] text-center"><span class="material-symbols-outlined text-secondary text-3xl mb-2">schedule</span><p class="font-bold text-sm">1일 1회</p><p class="text-xs text-on-surface-variant">아침 공복 또는 식후</p></div>
+                <div class="bg-surface-container-lowest p-6 rounded-[1.5rem] text-center"><span class="material-symbols-outlined text-secondary text-3xl mb-2">water_drop</span><p class="font-bold text-sm">1포 (80ml)</p><p class="text-xs text-on-surface-variant">그대로 음용</p></div>
+                <div class="bg-surface-container-lowest p-6 rounded-[1.5rem] text-center"><span class="material-symbols-outlined text-secondary text-3xl mb-2">thermostat</span><p class="font-bold text-sm">서늘한 곳</p><p class="text-xs text-on-surface-variant">직사광선 피해 보관</p></div>
+                <div class="bg-surface-container-lowest p-6 rounded-[1.5rem] text-center"><span class="material-symbols-outlined text-secondary text-3xl mb-2">event</span><p class="font-bold text-sm">2년</p><p class="text-xs text-on-surface-variant">유통기한</p></div>
+            </div>
+            <p class="text-sm text-on-surface-variant bg-surface-container-highest p-4 rounded-[1rem]">
+                💡 냉장 보관 후 차갑게 드시면 더욱 깔끔한 맛을 느끼실 수 있습니다.
+            </p>
+        </div>
+        <div class="gs-reveal">
+            <h2 class="font-headline text-3xl mb-8">이런 분께 추천합니다</h2>
+            <div class="space-y-4">
+                <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings:'FILL' 1">check_circle</span><p class="text-on-surface">매일 꾸준한 건강관리를 원하시는 분</p></div>
+                <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings:'FILL' 1">check_circle</span><p class="text-on-surface">면역력 증진과 피로 개선이 필요하신 분</p></div>
+                <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings:'FILL' 1">check_circle</span><p class="text-on-surface">최고 등급의 홍삼을 찾으시는 분</p></div>
+                <div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary mt-0.5" style="font-variation-settings:'FILL' 1">check_circle</span><p class="text-on-surface">부모님·지인께 믿을 수 있는 선물을 드리고 싶은 분</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- ===== S7: 고객 리뷰 ===== -->
+<section class="py-24 px-10 bg-surface">
+<div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 gs-reveal">
+        <h2 class="font-headline text-3xl md:text-4xl mb-2">진삼가를 경험한 분들</h2>
+        <p class="text-on-surface-variant">★★★★★ 평균 4.9점</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-surface-container-lowest p-8 rounded-[2rem] gs-reveal editorial-shadow">
+            <div class="flex mb-4 text-secondary"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span></div>
+            <p class="font-headline text-lg leading-relaxed mb-6">"부모님 선물로 드렸는데 색도 진하고 맛도 깊다고 너무 좋아하세요."</p>
+            <p class="text-xs text-on-surface-variant">김O수, 50대 · 서울</p>
+        </div>
+        <div class="bg-surface-container-lowest p-8 rounded-[2rem] gs-reveal editorial-shadow">
+            <div class="flex mb-4 text-secondary"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span></div>
+            <p class="font-headline text-lg leading-relaxed mb-6">"부산은행 VIP 선물로 받아서 알게 됐는데, 지금은 직접 구매합니다."</p>
+            <p class="text-xs text-on-surface-variant">이O정, 40대 · 부산</p>
+        </div>
+        <div class="bg-surface-container-lowest p-8 rounded-[2rem] gs-reveal editorial-shadow">
+            <div class="flex mb-4 text-secondary"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span></div>
+            <p class="font-headline text-lg leading-relaxed mb-6">"어머니께 드렸더니 매달 주문해 달라고 하십니다. 확실히 다르대요."</p>
+            <p class="text-xs text-on-surface-variant">박O영, 40대 · 경남</p>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- ===== S9: 함께 추천하는 제품 + 브랜드 클로징 ===== -->
+<section class="py-24 px-10 bg-surface-container-low">
+<div class="max-w-6xl mx-auto">
+    <h2 class="font-headline text-3xl mb-12 text-center gs-reveal">함께 추천하는 제품</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-16">
+        <div class="bg-surface-container-lowest rounded-[2rem] overflow-hidden gs-reveal editorial-shadow">
+            <div class="bg-surface-container-low p-8 flex items-center justify-center h-48"><img class="max-h-full object-contain rounded-[1rem]" alt="진삼가 삼" src="img/prod_sam.png"/></div>
+            <div class="p-6"><h4 class="font-headline text-lg mb-1">진삼가 삼</h4><p class="text-xs text-on-surface-variant mb-2">매일 건강 홍삼추출액</p><span class="text-primary font-bold">185,000원</span></div>
+        </div>
+        <div class="bg-surface-container-lowest rounded-[2rem] overflow-hidden gs-reveal editorial-shadow">
+            <div class="bg-surface-container-low p-8 flex items-center justify-center h-48"><img class="max-h-full object-contain rounded-[1rem]" alt="원데이원타임" src="img/prod_oneday.png"/></div>
+            <div class="p-6"><h4 class="font-headline text-lg mb-1">원데이원타임</h4><p class="text-xs text-on-surface-variant mb-2">간편 스틱 홍삼정</p><span class="text-primary font-bold">135,000원</span></div>
+        </div>
+        <div class="bg-surface-container-lowest rounded-[2rem] overflow-hidden gs-reveal editorial-shadow">
+            <div class="bg-surface-container-low p-8 flex items-center justify-center h-48"><img class="max-h-full object-contain rounded-[1rem]" alt="홍삼정 마스터" src="img/prod_master.png"/></div>
+            <div class="p-6"><h4 class="font-headline text-lg mb-1">홍삼정 마스터</h4><p class="text-xs text-on-surface-variant mb-2">전통 농축 홍삼정</p><span class="text-primary font-bold">250,000원</span></div>
+        </div>
+    </div>
+    <div class="bg-surface-container-high rounded-[2rem] p-12 text-center gs-reveal">
+        <p class="font-headline text-2xl text-primary mb-2">진삼가</p>
+        <p class="text-on-surface-variant text-sm mb-6">9번의 정성으로 홍삼에 진심을 담다</p>
+        <p class="text-xs text-on-surface-variant/60 mb-8">풍기 6년근 · 9증9포 특허 기술 · 합성첨가물 제로</p>
+        <div class="flex justify-center gap-6">
+            <a href="product-story.html" class="link-lift text-primary text-xs uppercase tracking-widest border-b border-primary/20 pb-1 hover:border-primary">브랜드 스토리 →</a>
+            <a href="products.html" class="link-lift text-primary text-xs uppercase tracking-widest border-b border-primary/20 pb-1 hover:border-primary">전체 제품 →</a>
+        </div>
+    </div>
+</div>
+</section>
+
+</main>
+
+<!-- Floating Purchase Bar (S8) -->
+<div id="floatingBar" class="floating-bar bg-[#1c1c19]/95 backdrop-blur-xl px-10 py-4">
+<div class="max-w-6xl mx-auto flex items-center justify-between gap-6">
+    <div class="flex items-center gap-4">
+        <span class="text-white font-headline text-lg hidden sm:block">진삼가 진 (眞)</span>
+        <span class="text-white/60 text-sm">360,000원</span>
+    </div>
+    <div class="flex gap-3">
+        <button class="btn-magnetic bg-white/10 border border-white/20 text-white px-6 py-3 text-xs uppercase tracking-widest rounded-full"><span class="btn-bg bg-white/20"></span><span>장바구니</span></button>
+        <button class="btn-magnetic bg-gradient-to-r from-[#60000c] to-[#8a0015] text-white px-8 py-3 text-xs uppercase tracking-widest rounded-full"><span class="btn-bg bg-secondary"></span><span>바로 구매</span></button>
+    </div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-[#1c1c19] text-white/60 w-full pt-16 pb-10 px-10 rounded-t-[4rem] relative -mt-8 z-20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto text-[13px]">
+    <div><div class="flex items-center gap-2 mb-4"><img src="img/logo.png" alt="진삼가" class="h-5 brightness-200"><span class="text-lg font-headline text-white">진삼가</span></div><p class="text-white/30 text-xs leading-relaxed">주식회사 진삼 | 대표이사 김명범</p></div>
+    <div><p class="text-white/80 mb-3 font-bold uppercase tracking-widest text-[15px]">회사 정보</p><span class="text-white/40 block">부산광역시 해운대구 세실로 48</span></div>
+    <div><p class="text-white/80 mb-3 font-bold uppercase tracking-widest text-[15px]">고객센터</p><span class="font-headline text-2xl text-white block">1599.3300</span><span class="text-white/40 block mt-1">평일 10:00-19:00</span></div>
+    <div><p class="text-white/80 mb-3 font-bold uppercase tracking-widest text-[15px]">바로가기</p><a class="link-lift text-white/40 hover:text-white block" href="#">공지사항</a><a class="link-lift text-white/40 hover:text-white block mt-2" href="#">FAQ</a></div>
+</div>
+<div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/10 flex justify-between items-center">
+    <p class="text-[12px] text-white/20">&copy; 2024 진삼가. All rights reserved.</p>
+    <div class="flex items-center gap-2"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span><span class="text-[12px] uppercase tracking-widest text-white/30 font-mono">System Operational</span></div>
+</div>
+<div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-white/5 px-2">
+    <p class="text-[26px] text-white/50 text-center leading-relaxed">본 사이트는 AI를 활용하여 기업의 브랜드 스토리를 추출하고, 이를 바탕으로 홍보 페이지를 구성하는 과정을 학습하기 위해 제작되었습니다. 진삼가(주식회사 진삼)의 동의를 받아 실제 브랜드 정보를 활용하였으며, 제품 판매·주문·결제 등 상거래 기능은 포함되어 있지 않습니다.</p>
+</div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.gs-reveal').forEach(el => {
+    gsap.to(el, { opacity:1, y:0, duration:1, ease:'power3.out', scrollTrigger:{ trigger:el, start:'top 85%', toggleActions:'play none none none' }});
+});
+
+// Floating bar visibility
+const productTop = document.getElementById('productTop');
+const floatingBar = document.getElementById('floatingBar');
+ScrollTrigger.create({
+    trigger: productTop,
+    start: 'bottom top',
+    onEnter: () => floatingBar.classList.add('visible'),
+    onLeaveBack: () => floatingBar.classList.remove('visible')
+});
+</script>
+</body></html>

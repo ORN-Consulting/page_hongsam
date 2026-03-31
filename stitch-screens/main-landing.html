@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>진삼가 - 9번의 정성으로 홍삼에 진심을 담다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary-container":"#8a0015","on-surface-variant":"#5a403c","on-primary-container":"#ff8f8a",
+        "surface-container-high":"#ebe8e3","background":"#fcf9f4","surface-container":"#f0ede8",
+        "on-secondary":"#ffffff","primary":"#60000c","surface-container-lowest":"#ffffff",
+        "on-primary":"#ffffff","outline-variant":"#e3beb8","surface-container-low":"#f6f3ee",
+        "secondary":"#735c00","surface":"#fcf9f4","on-surface":"#1c1c19","outline":"#8e706b",
+        "surface-container-highest":"#e5e2dd","primary-fixed-dim":"#ffb3af",
+      },
+      fontFamily: {
+        "headline":["Gowun Batang","Noto Serif KR","Batang","Georgia","serif"],
+        "body":["Gowun Dodum","Noto Sans KR","Malgun Gothic","sans-serif"],
+        "label":["Gowun Dodum","Noto Sans KR","Malgun Gothic","sans-serif"]
+      },
+    },
+  },
+}
+</script>
+<style>
+    .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 100,'GRAD' 0,'opsz' 24; }
+
+    /* ===== CINEMATIC: Noise Overlay ===== */
+    .noise-overlay {
+        position: fixed; top:0; left:0; width:100%; height:100%;
+        pointer-events: none; z-index: 9999; opacity: 0.04;
+    }
+
+    /* ===== CINEMATIC: Magnetic Buttons ===== */
+    .btn-magnetic {
+        position: relative; overflow: hidden; cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .btn-magnetic:hover { transform: scale(1.03); }
+    .btn-magnetic .btn-bg {
+        position: absolute; inset:0; transform: translateY(100%);
+        transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .btn-magnetic:hover .btn-bg { transform: translateY(0); }
+    .btn-magnetic span { position: relative; z-index: 1; }
+
+    /* ===== CINEMATIC: Link Lift ===== */
+    .link-lift { transition: transform 0.3s ease, color 0.3s ease; }
+    .link-lift:hover { transform: translateY(-2px); }
+
+    /* Nav link hover underline */
+    .nav-link {
+        position: relative;
+    }
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: currentColor;
+        transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    /* ===== CINEMATIC: Floating Pill Nav ===== */
+    .nav-pill {
+        position: fixed; top: 1.25rem; left: 50%; transform: translateX(-50%);
+        z-index: 100; border-radius: 9999px;
+        transition: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+        padding: 0.75rem 2rem;
+    }
+    .nav-pill.at-top {
+        background: transparent; border: 1px solid rgba(255,255,255,0.15);
+    }
+    .nav-pill.scrolled {
+        background: rgba(252,249,244,0.6); backdrop-filter: blur(24px);
+        border: 1px solid rgba(227,190,184,0.2);
+        box-shadow: 0 8px 32px rgba(28,28,25,0.08);
+    }
+
+    /* ===== GSAP reveal ===== */
+    .gs-reveal { opacity: 0; transform: translateY(40px); }
+
+    /* ===== Editorial ===== */
+    .bg-velvet-gradient { background: linear-gradient(135deg, #60000c, #8a0015); }
+    .editorial-shadow { box-shadow: 0 20px 60px -15px rgba(28,28,25,0.06); }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim selection:text-primary">
+
+<!-- Noise Overlay SVG -->
+<svg class="noise-overlay" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
+
+<!-- ===== FLOATING PILL NAV ===== -->
+<nav id="navPill" class="nav-pill at-top">
+<div class="flex items-center gap-8">
+    <div class="flex items-center gap-2">
+        <img src="img/logo.png" alt="진삼가" class="h-6">
+        <span class="nav-brand text-lg font-headline tracking-tighter text-white/90 transition-colors duration-500">진삼가</span>
+    </div>
+    <div class="hidden md:flex items-center gap-7 font-headline text-[15px]">
+        <a class="nav-link link-lift text-white/70 hover:text-white transition-colors" href="#">홈</a>
+        <a class="nav-link link-lift text-white/70 hover:text-white transition-colors" href="product-story.html">스토리</a>
+        <a class="nav-link link-lift text-white/70 hover:text-white transition-colors" href="products.html">제품</a>
+        <a class="nav-link link-lift text-white/70 hover:text-white transition-colors" href="#">후기</a>
+    </div>
+    <button class="btn-magnetic nav-cta ml-2 bg-white/10 border border-white/20 text-white px-6 py-2 text-xs uppercase tracking-widest rounded-full">
+        <span class="btn-bg bg-primary"></span>
+        <span>구매하기</span>
+    </button>
+</div>
+</nav>
+
+<main>
+
+<!-- ===== HERO: The Opening Shot (100dvh) ===== -->
+<section id="heroSection" class="relative h-[100dvh] flex items-end overflow-hidden">
+    <div class="absolute inset-0 z-0 rounded-[2rem]">
+        <img class="w-full h-full object-cover scale-105" alt="진삼가 프리미엄 홍삼" src="img/main_1.jpg"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#1c1c19] via-[#1c1c19]/50 to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-10 pb-24 md:pb-32 w-full">
+        <span class="gs-reveal inline-block text-secondary font-label text-xs uppercase tracking-[0.3em] mb-6">9증9포 명품홍삼</span>
+        <h1 class="gs-reveal font-headline text-5xl md:text-7xl lg:text-8xl leading-[1.1] mb-4 text-white">
+            모두 담은 홍삼,
+        </h1>
+        <h1 class="gs-reveal font-headline text-5xl md:text-7xl lg:text-[7rem] leading-[1.1] mb-8 italic text-primary-fixed-dim">
+            이제부터 진삼.
+        </h1>
+        <p class="gs-reveal font-body text-lg text-white/50 max-w-lg leading-relaxed mb-10">
+            풍기 6년근 인삼을 세계 최초 전자동 9증9포 기술로 빚어, 합성첨가물 하나 없이 오직 홍삼 그대로를 담았습니다.
+        </p>
+        <div class="gs-reveal flex flex-col sm:flex-row gap-6">
+            <a href="products.html" class="btn-magnetic bg-velvet-gradient text-white px-10 py-4 tracking-widest uppercase text-xs rounded-full inline-block text-center">
+                <span class="btn-bg bg-secondary"></span>
+                <span>제품 보러가기</span>
+            </a>
+            <a href="product-story.html" class="link-lift border-b border-white/30 py-4 px-2 text-xs uppercase tracking-widest text-white/60 hover:text-white hover:border-white transition-colors">
+                브랜드 스토리
+            </a>
+        </div>
+    </div>
+    <!-- 6년근 floating badge -->
+    <div class="absolute bottom-24 right-10 md:right-20 z-10 bg-surface/80 backdrop-blur-xl p-6 rounded-[2rem] editorial-shadow gs-reveal">
+        <p class="font-headline text-3xl text-primary">6년근</p>
+        <p class="font-label text-[12px] uppercase tracking-widest text-on-surface-variant">풍기 인증 인삼</p>
+    </div>
+</section>
+
+
+<!-- ===== FEATURES: Bento Grid ===== -->
+<section class="py-32 bg-surface-container-low px-10">
+<div class="max-w-7xl mx-auto">
+    <div class="mb-20 gs-reveal">
+        <h2 class="font-headline text-4xl md:text-5xl mb-4">진삼가는 모두 담았습니다</h2>
+        <div class="h-0.5 w-24 bg-secondary"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 9증9포 -->
+        <div class="md:col-span-2 bg-surface-container-lowest p-12 rounded-[2rem] flex flex-col justify-between gs-reveal editorial-shadow">
+            <div>
+                <h3 class="font-headline text-3xl mb-4 flex items-center gap-3"><span class="material-symbols-outlined text-secondary text-2xl">science</span>오직 9증9포</h3>
+                <p class="text-on-surface-variant leading-relaxed max-w-lg">
+                    특허받은 진삼가의 기술로 9번 찌고 9번 말린 9증9포 홍삼. 세계 최초 전자동 시스템으로 0.1도 단위의 정밀 온도 제어가 가능합니다. 13종의 특허로 보호받는 독자 기술입니다.
+                </p>
+            </div>
+            <img class="mt-12 h-64 w-full object-cover rounded-[1.5rem]" alt="9증9포" src="img/banner01-A.jpg"/>
+        </div>
+        <!-- 진세노사이드 -->
+        <div class="bg-primary p-12 text-on-primary rounded-[2rem] flex flex-col justify-between gs-reveal">
+            <div></div>
+            <div>
+                <h3 class="font-headline text-3xl mb-4">진세노사이드<br>5~12배</h3>
+                <p class="text-on-primary-container leading-relaxed">
+                    식약처 인증 기준 대비 압도적인 함유량. 9증9포 공정이 만들어내는 객관적 품질 차이입니다.
+                </p>
+            </div>
+        </div>
+        <!-- 합성첨가물 제로 -->
+        <div class="bg-surface-container-highest p-12 rounded-[2rem] gs-reveal">
+            <h3 class="font-headline text-2xl mb-4 flex items-center gap-3"><span class="material-symbols-outlined text-primary text-2xl">verified</span>합성첨가물 제로</h3>
+            <p class="text-on-surface-variant text-sm mb-8">
+                착향료, 색소, 액상과당 없이 순수 홍삼 원료만 사용합니다. 어린이 제품조차 자연 원료만으로 배합합니다.
+            </p>
+            <div class="flex flex-wrap gap-2">
+                <span class="bg-surface px-4 py-1.5 rounded-full text-[12px] uppercase tracking-wider text-secondary font-bold">HACCP</span>
+                <span class="bg-surface px-4 py-1.5 rounded-full text-[12px] uppercase tracking-wider text-secondary font-bold">FSSC22000</span>
+                <span class="bg-surface px-4 py-1.5 rounded-full text-[12px] uppercase tracking-wider text-secondary font-bold">HALAL</span>
+            </div>
+        </div>
+        <!-- 6년근 인삼 -->
+        <div class="md:col-span-2 relative overflow-hidden group h-80 rounded-[2rem] gs-reveal">
+            <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="풍기 6년근 인삼" src="img/banner01-D.jpg"/>
+            <div class="relative z-10 p-12 bg-gradient-to-t from-black/80 to-transparent h-full flex flex-col justify-end text-white rounded-[2rem]">
+                <h3 class="font-headline text-3xl mb-2">풍기 6년근 인삼</h3>
+                <p class="max-w-md opacity-80">1541년 주세붕 이래 인삼 재배의 발상지, 소백산 자락 풍기. 해발 400~500m 고원지대에서 6년간 땅의 기운을 품은 인삼만을 사용합니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- ===== PHILOSOPHY: The Manifesto ===== -->
+<section class="relative py-40 bg-[#1c1c19] text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <img class="w-full h-full object-cover" alt="" src="img/banner01-A.jpg"/>
+    </div>
+    <div class="max-w-5xl mx-auto px-10 relative z-10 text-center">
+        <p class="gs-reveal text-white/40 text-lg md:text-xl mb-8 leading-relaxed">
+            대부분의 홍삼은 1회 증숙, 1회 건조로 만들어집니다.
+        </p>
+        <h2 class="gs-reveal font-headline text-4xl md:text-6xl lg:text-7xl leading-tight mb-8">
+            진삼가는<br><span class="italic text-primary-fixed-dim">9번의 정성</span>으로<br>차이를 만듭니다.
+        </h2>
+        <p class="gs-reveal text-white/30 text-sm uppercase tracking-widest">
+            9증9포 &middot; 풍기 6년근 &middot; 합성첨가물 제로 &middot; 진세노사이드 5~12배
+        </p>
+    </div>
+</section>
+
+
+<!-- ===== PRODUCTS: Heritage Scroll ===== -->
+<section class="py-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-10 mb-16 flex justify-between items-end">
+    <div class="max-w-xl gs-reveal">
+        <span class="font-label text-xs uppercase tracking-[0.2em] text-secondary">Signature Products</span>
+        <h2 class="font-headline text-4xl md:text-5xl mt-4">진삼가의 제품들</h2>
+    </div>
+    <div class="hidden md:block gs-reveal">
+        <a href="products.html" class="link-lift flex items-center gap-4 text-xs uppercase tracking-widest font-bold group">
+            전체 상품 보기
+            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">trending_flat</span>
+        </a>
+    </div>
+</div>
+<div class="flex gap-8 px-10 pb-10 overflow-x-auto" style="scrollbar-width:none;">
+    <div class="flex-none w-[280px] group gs-reveal">
+        <div class="bg-surface-container-low p-8 mb-4 flex items-center justify-center h-72 overflow-hidden rounded-[2rem]">
+            <img class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 rounded-[1.5rem]" alt="진삼가 진" src="img/prod_jin.png"/>
+        </div>
+        <h4 class="font-headline text-lg mb-1">진삼가 진(眞)</h4>
+        <p class="text-on-surface-variant text-sm mb-2">홍삼추출액 100%</p>
+        <span class="text-primary font-bold">360,000원</span>
+    </div>
+    <div class="flex-none w-[280px] group gs-reveal">
+        <div class="bg-surface-container-low p-8 mb-4 flex items-center justify-center h-72 overflow-hidden rounded-[2rem]">
+            <img class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 rounded-[1.5rem]" alt="진삼가 삼" src="img/prod_sam.png"/>
+        </div>
+        <h4 class="font-headline text-lg mb-1">진삼가 삼</h4>
+        <p class="text-on-surface-variant text-sm mb-2">홍삼추출액 80ml x 30포</p>
+        <span class="text-primary font-bold">185,000원</span>
+    </div>
+    <div class="flex-none w-[280px] group gs-reveal">
+        <div class="bg-surface-container-low p-8 mb-4 flex items-center justify-center h-72 overflow-hidden rounded-[2rem]">
+            <img class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 rounded-[1.5rem]" alt="홍삼정 마스터" src="img/prod_master.png"/>
+        </div>
+        <h4 class="font-headline text-lg mb-1">홍삼정 마스터</h4>
+        <p class="text-on-surface-variant text-sm mb-2">홍삼농축액 240g</p>
+        <span class="text-primary font-bold">250,000원</span>
+    </div>
+    <div class="flex-none w-[280px] group gs-reveal">
+        <div class="bg-surface-container-low p-8 mb-4 flex items-center justify-center h-72 overflow-hidden rounded-[2rem]">
+            <img class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 rounded-[1.5rem]" alt="홍삼추출액 45" src="img/prod_45.png"/>
+        </div>
+        <h4 class="font-headline text-lg mb-1">홍삼추출액 45</h4>
+        <p class="text-on-surface-variant text-sm mb-2">홍삼추출액 80ml x 30포</p>
+        <span class="text-primary font-bold">135,000원</span>
+    </div>
+    <div class="flex-none w-[280px] group gs-reveal">
+        <div class="bg-surface-container-low p-8 mb-4 flex items-center justify-center h-72 overflow-hidden rounded-[2rem]">
+            <img class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 rounded-[1.5rem]" alt="원데이원타임" src="img/prod_oneday.png"/>
+        </div>
+        <h4 class="font-headline text-lg mb-1">원데이원타임</h4>
+        <p class="text-on-surface-variant text-sm mb-2">홍삼정 스틱 10ml x 30포</p>
+        <span class="text-primary font-bold">135,000원</span>
+    </div>
+    <div class="flex-none w-[280px] group gs-reveal">
+        <div class="bg-surface-container-low p-8 mb-4 flex items-center justify-center h-72 overflow-hidden rounded-[2rem]">
+            <img class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110 rounded-[1.5rem]" alt="키즈박사" src="img/prod_kids.png"/>
+        </div>
+        <h4 class="font-headline text-lg mb-1">키즈박사</h4>
+        <p class="text-on-surface-variant text-sm mb-2">홍삼음료 12ml x 30포</p>
+        <span class="text-primary font-bold">83,000원</span>
+    </div>
+</div>
+</section>
+
+
+<!-- ===== REVIEWS ===== -->
+<section class="py-32 bg-surface px-10">
+<div class="max-w-7xl mx-auto">
+    <div class="text-center mb-24 gs-reveal">
+        <h2 class="font-headline text-4xl md:text-5xl">고객의 목소리</h2>
+        <p class="font-body text-on-surface-variant mt-4">홍삼을 아는 사람이 먹는 홍삼, 진삼가</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-surface-container-lowest p-10 rounded-[2rem] flex flex-col gs-reveal editorial-shadow">
+            <div class="flex mb-6 text-secondary">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+            </div>
+            <p class="font-headline text-lg leading-relaxed mb-8">"부모님 선물로 드렸는데 색도 진하고 맛도 깊다고 너무 좋아하세요. 다른 홍삼과는 확실히 다르다고 하시네요."</p>
+            <div class="mt-auto">
+                <p class="font-label text-xs uppercase tracking-widest font-bold">김** 고객님</p>
+                <p class="text-[12px] text-on-surface-variant uppercase tracking-widest mt-1">진삼가 진(眞) 구매</p>
+            </div>
+        </div>
+        <div class="bg-surface-container-lowest p-10 rounded-[2rem] flex flex-col gs-reveal editorial-shadow">
+            <div class="flex mb-6 text-secondary">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+            </div>
+            <p class="font-headline text-lg leading-relaxed mb-8">"성분표를 보고 깜짝 놀랐어요. 정말 홍삼 외에는 아무것도 안 들어있더라고요. 합성첨가물 제로라는 말이 사실이었습니다."</p>
+            <div class="mt-auto">
+                <p class="font-label text-xs uppercase tracking-widest font-bold">박** 고객님</p>
+                <p class="text-[12px] text-on-surface-variant uppercase tracking-widest mt-1">원데이원타임 구매</p>
+            </div>
+        </div>
+        <div class="bg-surface-container-lowest p-10 rounded-[2rem] flex flex-col gs-reveal editorial-shadow">
+            <div class="flex mb-6 text-secondary">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star</span>
+            </div>
+            <p class="font-headline text-lg leading-relaxed mb-8">"아이가 홍삼을 싫어했는데 키즈박사는 잘 먹어요. 딸기맛인데 천연 재료만 쓴다니 안심이 됩니다. 꾸준히 먹이려고요."</p>
+            <div class="mt-auto">
+                <p class="font-label text-xs uppercase tracking-widest font-bold">이** 고객님</p>
+                <p class="text-[12px] text-on-surface-variant uppercase tracking-widest mt-1">키즈박사 구매</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- ===== CTA ===== -->
+<section class="py-40 bg-on-surface text-surface px-10 relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+    <img class="w-full h-full object-cover" alt="" src="img/main_3.jpg"/>
+</div>
+<div class="max-w-4xl mx-auto text-center relative z-10">
+    <h2 class="gs-reveal font-headline text-4xl md:text-6xl mb-6">9번의 정성,</h2>
+    <h2 class="gs-reveal font-headline text-4xl md:text-6xl italic text-primary-fixed-dim mb-12">당신의 건강을 위해.</h2>
+    <p class="gs-reveal font-body text-xl opacity-70 mb-16 max-w-2xl mx-auto leading-relaxed">
+        풍기 6년근 인삼의 깊은 기운을 9증9포 기술로 담아낸 진삼가. 합성첨가물 없는 진짜 홍삼을 경험해 보세요.
+    </p>
+    <div class="gs-reveal flex flex-col sm:flex-row justify-center gap-8">
+        <button class="btn-magnetic bg-surface text-primary px-12 py-5 font-bold uppercase tracking-widest text-xs rounded-full">
+            <span class="btn-bg bg-secondary"></span>
+            <span>구매하기</span>
+        </button>
+        <a href="product-story.html" class="link-lift border border-surface/30 px-12 py-5 font-bold uppercase tracking-widest text-xs rounded-full hover:border-surface transition-colors text-center">
+            브랜드 스토리
+        </a>
+    </div>
+</div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER: Dark + rounded-t ===== -->
+<footer class="bg-[#1c1c19] text-white/60 w-full pt-20 pb-10 px-10 rounded-t-[4rem] relative -mt-8 z-20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto text-[13px]">
+    <div class="md:col-span-1">
+        <div class="flex items-center gap-2 mb-6">
+            <img src="img/logo.png" alt="진삼가" class="h-6 brightness-200">
+            <span class="text-xl font-headline text-white normal-case tracking-normal">진삼가</span>
+        </div>
+        <p class="text-white/40 normal-case leading-relaxed text-xs">
+            9번의 정성으로 홍삼에 진심을 담다.<br>주식회사 진삼 | 대표이사 김명범
+        </p>
+    </div>
+    <div class="flex flex-col space-y-3">
+        <p class="text-white/80 mb-3 font-bold uppercase tracking-widest text-[15px]">회사 정보</p>
+        <span class="text-white/40 normal-case">부산광역시 해운대구 세실로 48</span>
+        <span class="text-white/40 normal-case">공장: 기장군 정관읍 산단5로 36-14</span>
+        <span class="text-white/40 normal-case">서울: 서초구 강남대로 315 9층</span>
+    </div>
+    <div class="flex flex-col space-y-3">
+        <p class="text-white/80 mb-3 font-bold uppercase tracking-widest text-[15px]">고객센터</p>
+        <span class="font-headline text-2xl text-white normal-case">1599.3300</span>
+        <span class="text-white/40 normal-case">평일 10:00 - 19:00</span>
+        <span class="text-white/40 normal-case">토/일/공휴일 휴무</span>
+    </div>
+    <div class="flex flex-col space-y-3">
+        <p class="text-white/80 mb-3 font-bold uppercase tracking-widest text-[15px]">바로가기</p>
+        <a class="link-lift text-white/40 hover:text-white transition-colors" href="#">공지사항</a>
+        <a class="link-lift text-white/40 hover:text-white transition-colors" href="#">FAQ</a>
+        <a class="link-lift text-white/40 hover:text-white transition-colors" href="#">상담안내</a>
+    </div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+    <p class="text-[12px] uppercase tracking-[0.15em] text-white/20">&copy; 2024 진삼가(주식회사 진삼). All rights reserved.</p>
+    <!-- System Operational indicator -->
+    <div class="flex items-center gap-2">
+        <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+        </span>
+        <span class="text-[12px] uppercase tracking-widest text-white/40 font-mono">System Operational</span>
+    </div>
+</div>
+<div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-white/5 px-2">
+    <p class="text-[26px] text-white/50 text-center leading-relaxed">본 사이트는 AI를 활용하여 기업의 브랜드 스토리를 추출하고, 이를 바탕으로 홍보 페이지를 구성하는 과정을 학습하기 위해 제작되었습니다. 진삼가(주식회사 진삼)의 동의를 받아 실제 브랜드 정보를 활용하였으며, 제품 판매·주문·결제 등 상거래 기능은 포함되어 있지 않습니다.</p>
+</div>
+</footer>
+
+<!-- ===== GSAP Animations ===== -->
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Nav morphing
+const heroEl = document.getElementById('heroSection');
+const navEl = document.getElementById('navPill');
+
+ScrollTrigger.create({
+    trigger: heroEl,
+    start: 'bottom 80px',
+    onEnter: () => {
+        navEl.classList.remove('at-top');
+        navEl.classList.add('scrolled');
+        navEl.querySelector('.nav-brand').classList.remove('text-white/90');
+        navEl.querySelector('.nav-brand').classList.add('text-primary');
+        navEl.querySelectorAll('.nav-link').forEach(l => {
+            l.classList.remove('text-white/70','hover:text-white');
+            l.classList.add('text-on-surface-variant','hover:text-primary');
+        });
+        const cta = navEl.querySelector('.nav-cta');
+        cta.classList.remove('bg-white/10','border-white/20','text-white');
+        cta.classList.add('bg-primary','border-primary','text-white');
+    },
+    onLeaveBack: () => {
+        navEl.classList.add('at-top');
+        navEl.classList.remove('scrolled');
+        navEl.querySelector('.nav-brand').classList.add('text-white/90');
+        navEl.querySelector('.nav-brand').classList.remove('text-primary');
+        navEl.querySelectorAll('.nav-link').forEach(l => {
+            l.classList.add('text-white/70','hover:text-white');
+            l.classList.remove('text-on-surface-variant','hover:text-primary');
+        });
+        const cta = navEl.querySelector('.nav-cta');
+        cta.classList.add('bg-white/10','border-white/20','text-white');
+        cta.classList.remove('bg-primary','border-primary','text-white');
+    }
+});
+
+// Staggered reveal for all .gs-reveal elements
+gsap.utils.toArray('.gs-reveal').forEach((el, i) => {
+    gsap.to(el, {
+        opacity: 1, y: 0, duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+        }
+    });
+});
+
+// Parallax on Philosophy bg image
+gsap.to('.relative.py-40 img', {
+    yPercent: 20,
+    ease: 'none',
+    scrollTrigger: {
+        trigger: '.relative.py-40',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+    }
+});
+</script>
+
+</body></html>
